@@ -1,53 +1,11 @@
-- Regularizar TÃ­tulo do Eleitor
+! Urgent Item: Talk to @Paulo
++ Teste   @Vitor sadfa
 
-- Teaser with Tiago
-- Helena's changes in NETRA
-- Bring the non cyclo on friday.
+- Item One
+- Item Two
 
-- Prepare devices for partners with Alex and Everett
 
-- Prepare tests with Tufts
 
-- Move viral with MIT Global Challenge
- 
-- Finish CATRA paper. 
-- Finish CATRA video.
-
-- Make the 3D display using the projector. 
-- Add color filters to the arduino test
-
-- Prepare a convergence-based device.
-
-- Preparar apresentaÃ§Ãµes para o IV Boot em xanxerÃª. 
-
-- Ver Visto para o canadÃ¡
-- Comprar passagens para o canadÃ¡
-- Registrar-se no SIGGRAPH.
-
-- Preparar apresentaÃ§Ã£o do CATRA. 
-
-- NETRA
--- Apr 22: NETRA Patent
--- Adrian Hong App. 
--- Apr 25: Deadline for designs to get there. 
--- May 24: Meeting in Copenhagen. 
--- Sep 1: Exhibition
-
-- Ajusting Displays
--- Fazer o protÃ³tipo
--- Testes
--- May 17: SIGGRAPH ASIA
-
-- Paper NETRA Game. 
--- Escrever o paper
--- Testes
--- Apr 22: UIST
-
-- Proposta de Tese
--- Juntar os papers do siggraph e escrever
-
-- UNIFESP
--- Verificar projeto. 
 
 
 
