@@ -1,3 +1,5 @@
-span.todo-people {color: #a0b;}
-span.todo-minus {color: #a22;}
-span.todo-plus {color: #2b2;}
+span.todo-people {color: #c79c60 }
+span.todo-urgent {color: #9a1f1b;}
+span.todo-plus {color: #c88900;}
+span.todo-date {color: #00681c;}
+span.todo-category {color: #5b10a0; }

@@ -40,6 +40,9 @@
         %></textarea>
 	
     </form>
+
+    <center>Powered by <a href="https://github.com/vitorpamplona/FreeToDo">FreeToDo</a></center>
+
     <script>
 	var saveTimeout = null;
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
