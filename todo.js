@@ -1,13 +1,26 @@
-CodeMirror.defineMode("diff", function() {
+CodeMirror.defineMode("todo", function() {
   return {
     token: function(stream) {
       var ch = stream.next();
-      stream.skipToEnd();
-      if (ch == "+") return "diff-plus";
-      if (ch == "-") return "diff-minus";
-      if (ch == "@") return "diff-rangeinfo";
+      
+      if (ch == "+") { 
+	//stream.skipToEnd(); 
+	while ((next = stream.peek()) != "@" && !stream.eol()) stream.next(); 
+ 	return "todo-plus"; 
+      }
+      if (ch == "!") { 
+	//stream.skipToEnd(); 
+	while ((next = stream.peek()) != "@" && !stream.eol()) stream.next(); 
+	
+	return "todo-minus"; 
+      }
+      
+      if (ch == "@") { 
+	while ((next = stream.next()) != " " && !stream.eol()); 
+	return "todo-people"; 
+      }
     }
   };
 });
 
-CodeMirror.defineMIME("text/x-diff", "diff");
+CodeMirror.defineMIME("text/x-todo", "todo");
