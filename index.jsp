@@ -86,8 +86,34 @@
             String file = "/var/bases/Todo/" + token + "_todo_list.txt";
             File fileObject = new File(file);
 
-	    if (!fileObject.exists())
+	    if (!fileObject.exists()) {
 		 fileObject.createNewFile();
+
+String data = 
+"Hey! Welcome! \n\n" +
+"This is your new to-do list. Just type items like the example below. \n" +
+"They will be automatically, real-time highlighted and saved in our servers. \n" +
+"Each gmail account can have only one to-do list. \n" +
+"\n"+ 
+"Best! \n"+ 
+"\n"+ 
+"* Project1\n"+ 
+"\n"+ 
+"! Print flyers ASAP \n"+ 
+"- Start shipping devices for partners \n"+ 
+"- Jul 1: Presentation \n"+ 
+"- May 4: Final Report \n"+ 
+"\n" +
+"* Project2\n" +
+"- Apr 26: Decide Title \n" +
+"- Apr 25: Check for PDFs Images \n" +
+"- Apr 25: Meet @Manuel's for Design \n" +
+"- Apr 25: Meet @Erick's business plan \n";
+
+		FileWriter filewriter = new FileWriter(file, false);
+		filewriter.write(data);
+		filewriter.close();
+	    }
 
             char data[] = new char[(int) fileObject.length()];
             FileReader filereader = new FileReader(file);
@@ -141,6 +167,8 @@
 		saveList();
 	});
     </script>
+
+    <center>Powered by <a href="https://github.com/vitorpamplona/FreeToDo">FreeToDo</a></center>
 
   </body>
 </html>
