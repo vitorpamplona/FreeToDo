@@ -10,10 +10,55 @@
     <script src="lib/codemirror.js"></script>
     <script src="lib/shortcut.js"></script>
     <script src="todo.js"></script>
+        
     <link rel="stylesheet" href="todo.css">
 
     <style>.CodeMirror {border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; height: 100%; line-height:130%;}</style>
     <link rel="stylesheet" href="css/docs.css">
+
+    <script src="https://www.google.com/jsapi?key=ABQIAAAAGFyZXBGYY8T2sP2n2EMRERQYhbeF10lDRB36msDv6drkT2aUeRQ5mzc-lyHhtb51G37OcN8IBA3HCw" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+	function getCookie(c_name)
+	{
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0;i<ARRcookies.length;i++)
+	{
+	  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+	  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+	  x=x.replace(/^\s+|\s+$/g,"");
+	  if (x==c_name)
+	    {
+	    return unescape(y);
+	    }
+	  }
+	}
+
+	var scope = "http://www.google.com/calendar/feeds";
+ 	var token;
+
+	// Load the latest version of the Google Data JavaScript Client
+	google.load('gdata', '2.x');
+
+	function logMeIn() {
+	   var status = google.accounts.user.getStatus();
+           if (status == google.accounts.AuthSubStatus.LOGGED_OUT) {
+	      token = google.accounts.user.login(scope);
+           } 
+	   fuckingGoogleToken = getCookie("g314-scope-0");
+	   token = fuckingGoogleToken.substr(fuckingGoogleToken.search("token=")+6, 45);
+	   document.cookie = "token="+escape(token);
+	}
+
+	function onGoogleDataLoad() {
+	   logMeIn();
+	}
+
+	// Call function once the client has loaded
+	google.setOnLoadCallback(onGoogleDataLoad);
+
+    </script>
   </head>
 
   <body>
@@ -26,22 +71,34 @@
 
 
 	<textarea id="code" name="code"><%
-            String file = application.getRealPath("/") + "todo_list.txt";
+	    String token = "";
+
+	    Cookie[] cookies = request.getCookies();
+	    for(int i = 0; i < cookies.length; i++) { 
+	        Cookie c = cookies[i];
+	        if (c.getName().equals("token")) {
+		    token = c.getValue();
+	        }
+	    } 
+
+	    token = token.replace("/","t");
+
+            String file = "/var/bases/Todo/" + token + "_todo_list.txt";
             File fileObject = new File(file);
+
+	    if (!fileObject.exists())
+		 fileObject.createNewFile();
 
             char data[] = new char[(int) fileObject.length()];
             FileReader filereader = new FileReader(file);
 
             int charsread = filereader.read(data);
             out.println(new String(data, 0 , charsread));
-            //out.println(filereader.getEncoding());
-
             filereader.close();
         %></textarea>
 	
     </form>
 
-    <center>Powered by <a href="https://github.com/vitorpamplona/FreeToDo">FreeToDo</a></center>
 
     <script>
 	var saveTimeout = null;
@@ -75,6 +132,7 @@
 		req.open("POST", "save.jsp", true); 
 		req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;"); 
 		req.setRequestHeader("encoding", "UTF-8");
+		req.setRequestHeader("token",escape(token));
 		req.send("todo_list="+encodeURIComponent(editor.getValue())); 
 	} 
 
